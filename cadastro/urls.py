@@ -1,6 +1,6 @@
 from rest_framework import routers
 from django.urls import path, include
-from .views import *
+from .views import EstadoViewSet, MunicipioViewSet, PessoaFisicaViewSet, PessoaJuridicaViewSet, VinculoViewSet, PedidoCredencialViewSet, EvolucaoPedidoViewSet, ObservacaoViewSet, DocumentoViewSet
 
 router = routers.DefaultRouter()
 router.register(r'estados', EstadoViewSet)
@@ -14,5 +14,5 @@ router.register(r'observacoes', ObservacaoViewSet)
 router.register(r'documentos', DocumentoViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
