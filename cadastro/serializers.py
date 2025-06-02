@@ -31,12 +31,7 @@ class PessoaFisicaSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('A data de nascimento não pode ser no futuro.')
         return value
 
-    def validate(self, value):
-        municipio = data.get('municipio')
-        estado = data.get('estado')
-        if municipio and estado and municipio.estado != estado:
-            raise serializers.ValidationError('O município não pertence ao estado informado.')
-        return value
+
 
 class PessoaJuridicaSerializer(serializers.ModelSerializer):
     class Meta:
