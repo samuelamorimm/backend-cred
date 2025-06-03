@@ -46,6 +46,7 @@ INSTALLED_APPS += [
     'users',
     'cadastro',
     'app',
+    'pedidos',
 ]
 
 REST_FRAMEWORK = {
