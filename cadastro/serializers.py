@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from datetime import date
-from validate_docbr import CPF, CNPJ
+# from validate_docbr import CPF, CNPJ
 from app.models import *
 
 class EstadoSerializer(serializers.ModelSerializer):

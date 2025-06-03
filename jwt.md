@@ -29,6 +29,6 @@ Corpo da Requisição (JSON)
 
 - **json:**
 {
-  "username": "seu_username",
+  "email": "seu_email",
   "password": "sua_senha"
 }
