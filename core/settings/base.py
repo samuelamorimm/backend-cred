@@ -47,6 +47,7 @@ INSTALLED_APPS += [
     'cadastro',
     'app',
     'pedidos',
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {

@@ -46,6 +46,8 @@ class VinculoSerializer(serializers.ModelSerializer):
 
 
 class PedidoCredencialSerializer(serializers.ModelSerializer):
+    nome_pessoafisica = serializers.CharField(source='vinculo.pessoafisica.nome',read_only=True)
+
     class Meta:
         model = PedidoCredencial
         fields = '__all__'

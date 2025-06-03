@@ -94,7 +94,7 @@ class PedidoCredencial(models.Model):
 
     id = models.BigAutoField(primary_key=True)
     data_pedido = models.DateTimeField()
-    status_pedido = models.CharField(max_length=1, choices=STATUS_CHOICES, default='A', null=True, blank=True)
+    status_pedido = models.CharField(max_length=1, choices=STATUS_CHOICES, default='E', null=True, blank=True)
     vinculo = models.ForeignKey(Vinculo, on_delete=models.DO_NOTHING, related_name='pedidos_credencial')
 
     def __str__(self):

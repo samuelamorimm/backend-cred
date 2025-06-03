@@ -13,7 +13,7 @@ class ConsultaPedido(APIView):
     data_nascimento = request.query_params.get('data')
     cpf = request.query_params.get('cpf')
 
-    if not cpf or data_nascimento:
+    if not cpf or not data_nascimento:
       return Response({
         "erro": "CPF e data de nascimento são obrigatórios."
       })
