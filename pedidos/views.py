@@ -7,9 +7,36 @@ from cadastro.serializers import PedidoCredencialSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 # Create your views here.
 
 class ConsultaPedido(APIView):
+  @swagger_auto_schema(
+        operation_description="Consulta o pedido de credencial de uma pessoa usando CPF e data de nascimento.",
+        manual_parameters=[
+            openapi.Parameter(
+                'cpf',
+                in_=openapi.IN_QUERY,
+                description="CPF da pessoa (somente números)",
+                type=openapi.TYPE_STRING,
+                required=True
+            ),
+            openapi.Parameter(
+                'data',
+                in_=openapi.IN_QUERY,
+                description="Data de nascimento no formato YYYY-MM-DD",
+                type=openapi.TYPE_STRING,
+                required=True
+            ),
+        ],
+        responses={
+            200: openapi.Response(description="Pedido encontrado com sucesso."),
+            400: "CPF e data de nascimento são obrigatórios.",
+            404: "Pessoa ou pedido não encontrado."
+        }
+    )
+
   def get(self, request):
     data_nascimento = request.query_params.get('data')
     cpf = request.query_params.get('cpf')
@@ -38,6 +65,22 @@ class ConsultaPedido(APIView):
     
 class UploadDocumento(APIView):
   parser_classes = [MultiPartParser]
+
+  @swagger_auto_schema(
+        operation_description="Upload de documento para um pedido de credencial.",
+        manual_parameters=[
+            openapi.Parameter('pedido_credencial', openapi.IN_FORM, type=openapi.TYPE_INTEGER, required=True, description='ID do pedido'),
+            openapi.Parameter('tipo_documento', openapi.IN_FORM, type=openapi.TYPE_STRING, required=False, description='Tipo do documento'),
+            openapi.Parameter('nome_documento', openapi.IN_FORM, type=openapi.TYPE_STRING, required=False, description='Nome do documento'),
+            openapi.Parameter('arquivo', openapi.IN_FORM, type=openapi.TYPE_FILE, required=True, description='Arquivo a ser enviado'),
+        ],
+        responses={
+            201: openapi.Response('Documento criado com sucesso'),
+            400: 'Erro de validação',
+            404: 'Pedido não encontrado',
+        }
+    )
+
 
   def post(self, request):
     pedido_id = request.data.get('pedido_credencial')
