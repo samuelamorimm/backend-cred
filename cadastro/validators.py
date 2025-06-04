@@ -15,13 +15,6 @@ def validar_telefone(telefone):
         raise ValidationError("Telefone inválido. Deve conter 10 ou 11 dígitos numéricos.")
 
 
-def validar_email_personalizado(email):
-    # Aqui pode colocar validações extras de domínio, etc.
-    # Exemplo para validar domínio específico:
-    # if not email.endswith('@email.com'):
-    #     raise ValidationError("Email deve ser do domínio '@email.com'.")
-    pass  # email básico já é validado pelo EmailField do Django
-
 
 def validar_datas_nascimento_emissao(data_nascimento, data_emissao):
     if data_emissao and data_emissao < data_nascimento:
@@ -32,9 +25,8 @@ def validar_datas_nascimento_emissao(data_nascimento, data_emissao):
     if idade < 0:
         raise ValidationError({"data_nascimento": "Data de nascimento não pode ser no futuro."})
 
-    # Se quiser obrigar maioridade mínima:
-    # if idade < 18:
-    #     raise ValidationError({"data_nascimento": "Deve ser maior de 18 anos."})
+    if idade < 18:
+        raise ValidationError({"data_nascimento": "Deve ser maior de 18 anos."})
 
 
 def validar_cpf(cpf):
@@ -43,14 +35,10 @@ def validar_cpf(cpf):
         raise ValidationError("CPF deve conter 11 dígitos numéricos.")
 
 
-
-
 def validar_cnpj(cnpj):
     cnpj_numeros = re.sub(r'\D', '', cnpj)
     if len(cnpj_numeros) != 14:
         raise ValidationError("CNPJ deve conter 14 dígitos numéricos.")
-
-
 
 
 def validar_status_pedido(status):

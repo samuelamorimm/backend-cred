@@ -45,7 +45,6 @@ INSTALLED_APPS += [
     'rest_framework_simplejwt',
     'users',
     'cadastro',
-    'app',
 ]
 
 REST_FRAMEWORK = {

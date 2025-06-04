@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from app.models import (
+from .models import (
     Estado, Municipio, PessoaFisica, PessoaJuridica, Vinculo,
     PedidoCredencial, EvolucaoPedido, Observacao, Documento
 )

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import (
+from .models import (
     Estado, Municipio, PessoaFisica, PessoaJuridica, Vinculo,
     PedidoCredencial, EvolucaoPedido, Observacao, Documento
 )

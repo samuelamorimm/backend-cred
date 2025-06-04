@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from app.models import (
+from .models import (
     Estado, Municipio, PessoaFisica, PessoaJuridica,
     Vinculo, PedidoCredencial, EvolucaoPedido, Observacao, Documento
 )
 from .validators import (
-    validar_cep, validar_telefone, validar_email_personalizado,
+    validar_cep, validar_telefone,
     validar_datas_nascimento_emissao, validar_cpf, validar_cnpj,
     validar_status_pedido, validar_renda
 )
@@ -39,10 +39,6 @@ class PessoaFisicaSerializer(serializers.ModelSerializer):
         validar_telefone(value)
         return value
 
-    def validate_email(self, value):
-        validar_email_personalizado(value)
-        return value
-
     def validate_cpf(self, value):
         validar_cpf(value)
         return value
@@ -66,10 +62,6 @@ class PessoaJuridicaSerializer(serializers.ModelSerializer):
 
     def validate_fone(self, value):
         validar_telefone(value)
-        return value
-
-    def validate_email(self, value):
-        validar_email_personalizado(value)
         return value
 
     def validate_cnpj(self, value):
