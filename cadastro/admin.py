@@ -44,4 +44,4 @@ class ObservacaoAdmin(admin.ModelAdmin):
 
 @admin.register(Documento)
 class DocumentoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome_documento', 'nome_arquivo', 'pedido_credencial')
+    list_display = ('id', 'nome_documento', 'tipo_documento', 'arquivo', 'pedido_credencial')

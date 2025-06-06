@@ -1,4 +1,4 @@
-# from django.db import models
+from django.db import models
 
 # class Estado(models.Model):
 #     id = models.BigAutoField(primary_key=True)
@@ -85,6 +85,7 @@
 #         return f"{self.pessoafisica.nome} - {self.cargo}"
 
 
+
 # class PedidoCredencial(models.Model):
 #     STATUS_CHOICES = [
 #         ('PENDENTE', 'Pendente'),
@@ -93,6 +94,7 @@
 #         ('REJEITADO', 'Rejeitado'),
 #         ('CANCELADO', 'Cancelado'),
 #     ]
+
 
 #     id = models.BigAutoField(primary_key=True)
 #     data_pedido = models.DateTimeField()
@@ -123,16 +125,16 @@
 #     def __str__(self):
 #         return self.titulo or f"Obs #{self.id}"
 
+# def upload_to_documento(instance, filename):
+#     return f'documentos/{instance.pedido_credencial.id}/{filename}'
 
 # class Documento(models.Model):
 #     id = models.BigAutoField(primary_key=True)
 #     nome_documento = models.CharField(max_length=255)
-#     nome_arquivo = models.CharField(max_length=255)
-#     extensao_arquivo = models.CharField(max_length=45)
-#     tamanho_arquivo = models.CharField(max_length=45)
 #     tipo_documento = models.CharField(max_length=45)
-#     conteudo = models.BinaryField()
+#     arquivo = models.FileField(upload_to=upload_to_documento)
 #     pedido_credencial = models.ForeignKey(PedidoCredencial, on_delete=models.DO_NOTHING, related_name='documentos')
+
 
 #     def __str__(self):
 #         return self.nome_documento
