@@ -1,4 +1,4 @@
-from app.models import Estado, Municipio, PessoaFisica, PessoaJuridica, Vinculo, PedidoCredencial, Documento, EvolucaoPedido, Observacao
+from cadastro.models import Estado, Municipio, PessoaFisica, PessoaJuridica, Vinculo, PedidoCredencial, Documento, EvolucaoPedido, Observacao
 from django.utils import timezone
 
 # Estado e Município
@@ -70,15 +70,6 @@ pedido = PedidoCredencial.objects.create(
 )
 
 # Documento
-Documento.objects.create(
-    nome_documento='RG',
-    nome_arquivo='rg_maria.pdf',
-    extensao_arquivo='pdf',
-    tamanho_arquivo='200KB',
-    tipo_documento='Identidade',
-    conteudo=b'PDF_BINARIO_AQUI',
-    pedido_credencial=pedido
-)
 
 # Evolução do Pedido
 EvolucaoPedido.objects.create(

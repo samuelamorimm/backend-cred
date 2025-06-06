@@ -7,6 +7,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from django.http import HttpResponse
 from .models import PedidoCredencial
+from drf_yasg.utils import swagger_auto_schema
 
 # Create your views here.
 
@@ -14,37 +15,73 @@ class EstadoViewSet(viewsets.ModelViewSet):
     queryset = Estado.objects.all()
     serializer_class = EstadoSerializer
 
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+
 class MunicipioViewSet(viewsets.ModelViewSet):
     queryset = Municipio.objects.all()
     serializer_class = MunicipioSerializer
+
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
 class PessoaFisicaViewSet(viewsets.ModelViewSet):
     queryset = PessoaFisica.objects.all()
     serializer_class = PessoaFisicaSerializer
 
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+
 class PessoaJuridicaViewSet(viewsets.ModelViewSet):
     queryset = PessoaJuridica.objects.all()
     serializer_class = PessoaJuridicaSerializer
+
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
 class VinculoViewSet(viewsets.ModelViewSet):
     queryset = Vinculo.objects.all()
     serializer_class = VinculoSerializer
 
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+
 class PedidoCredencialViewSet(viewsets.ModelViewSet):
     queryset = PedidoCredencial.objects.all()
     serializer_class = PedidoCredencialSerializer
+
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
 class EvolucaoPedidoViewSet(viewsets.ModelViewSet):
     queryset = EvolucaoPedido.objects.all()
     serializer_class = EvolucaoPedidoSerializer
 
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+
 class ObservacaoViewSet(viewsets.ModelViewSet):
     queryset = Observacao.objects.all()
     serializer_class = ObservacaoSerializer
 
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+
 class DocumentoViewSet(viewsets.ModelViewSet):
     queryset = Documento.objects.all()
     serializer_class = DocumentoSerializer
+
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
 def export_pedidos_csv(request):
     response = HttpResponse(content_type='text/csv')

@@ -19,7 +19,6 @@ router.register(r'documentos', DocumentoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api/', include(router.urls)),
     path('pedido/<int:pedido_id>/atualizar-status/', AtualizarStatusPedidoView.as_view()),
     path('exportar/pedidos.csv', export_pedidos_csv, name='exportar_pedidos_csv'),
     path('exportar/pedidos.pdf', export_pedidos_pdf, name='exportar_pedidos_pdf'),
