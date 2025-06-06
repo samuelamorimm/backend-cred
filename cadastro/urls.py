@@ -10,7 +10,7 @@ router.register(r'pessoas-fisicas', PessoaFisicaViewSet)
 router.register(r'pessoas-juridicas', PessoaJuridicaViewSet)
 router.register(r'vinculos', VinculoViewSet)
 router.register(r'pedidos-credencial', PedidoCredencialViewSet)
-router.register(r'evolucoes-pedido', EvolucaoPedidoViewSet)
+router.register(r'evolucoes', EvolucaoPedidoViewSet)
 router.register(r'observacoes', ObservacaoViewSet)
 router.register(r'documentos', DocumentoViewSet)
 
