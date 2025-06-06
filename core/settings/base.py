@@ -49,7 +49,6 @@ INSTALLED_APPS += [
     'users',
     'cadastro',
     'statusPedido',
-    'app',
     'pedidos',
 ]
 
