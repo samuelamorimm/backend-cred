@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from app.models import PedidoCredencial, Vinculo, PessoaFisica, Documento
+from cadastro.models import PedidoCredencial, Vinculo, PessoaFisica, Documento
 from cadastro.serializers import PedidoCredencialSerializer
 from rest_framework.response import Response
 from rest_framework import status
@@ -62,6 +62,8 @@ class ConsultaPedido(APIView):
     
     serializer = PedidoCredencialSerializer(pedido)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
     
 class UploadDocumento(APIView):
   parser_classes = [MultiPartParser]
