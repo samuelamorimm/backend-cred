@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from .models import *
 from .serializers import *
 import csv
@@ -8,6 +9,7 @@ from reportlab.lib.pagesizes import A4
 from django.http import HttpResponse
 from .models import PedidoCredencial
 from drf_yasg.utils import swagger_auto_schema
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -28,12 +30,23 @@ class MunicipioViewSet(viewsets.ModelViewSet):
         return super().destroy(request, *args, **kwargs)
 
 class PessoaFisicaViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = PessoaFisica.objects.all()
     serializer_class = PessoaFisicaSerializer
+    http_method_names = ['post']
 
     @swagger_auto_schema(auto_schema=None)
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
+
+#-----------------filtro em pessoa fisica------------------    
+class PessoaFisicaFiltro(viewsets.ModelViewSet):
+    permission_classes = [IsAdminUser]
+    queryset = PessoaFisica.objects.all()
+    serializer_class = PessoaFisicaSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['cpf', 'nome', 'sexo', 'estado_civil', 'municipio', 'estado']
+
 
 class PessoaJuridicaViewSet(viewsets.ModelViewSet):
     queryset = PessoaJuridica.objects.all()

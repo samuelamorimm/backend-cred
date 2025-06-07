@@ -1,6 +1,6 @@
 from rest_framework import routers
 from django.urls import path, include
-from .views import EstadoViewSet, MunicipioViewSet, PessoaFisicaViewSet, PessoaJuridicaViewSet, VinculoViewSet, PedidoCredencialViewSet, EvolucaoPedidoViewSet, ObservacaoViewSet, DocumentoViewSet
+from .views import EstadoViewSet, MunicipioViewSet, PessoaFisicaViewSet, PessoaJuridicaViewSet, VinculoViewSet, PedidoCredencialViewSet, EvolucaoPedidoViewSet, ObservacaoViewSet, DocumentoViewSet, PessoaFisicaFiltro
 from statusPedido.views import AtualizarStatusPedidoView
 from logs.views import LogDeAcessoViewSet
 from .views import export_pedidos_csv, export_pedidos_pdf
@@ -17,6 +17,7 @@ router.register(r'evolucoes-pedido', EvolucaoPedidoViewSet)
 router.register(r'observacoes', ObservacaoViewSet)
 router.register(r'documentos', DocumentoViewSet)
 router.register(r'logs', LogDeAcessoViewSet)
+router.register(r'pessoa-fisica-filtrar', PessoaFisicaFiltro, basename='pessoa-fisica-filtrar')
 
 
 urlpatterns = [
