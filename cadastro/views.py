@@ -46,15 +46,27 @@ class PessoaFisicaFiltro(viewsets.ModelViewSet):
     serializer_class = PessoaFisicaSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['cpf', 'nome', 'sexo', 'estado_civil', 'municipio', 'estado']
+#-----------------filtro em pessoa fisica------------------ 
 
 
 class PessoaJuridicaViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = PessoaJuridica.objects.all()
     serializer_class = PessoaJuridicaSerializer
+    http_method_names = ['post']
 
     @swagger_auto_schema(auto_schema=None)
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
+    
+#-----------------filtro em pessoa Juridica------------------    
+class PessoaJuridicaFiltro(viewsets.ModelViewSet):
+    permission_classes = [IsAdminUser]
+    queryset = PessoaJuridica.objects.all()
+    serializer_class = PessoaJuridicaSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['cnpj', 'razao_social', 'municipio', 'estado']
+#-----------------filtro em pessoa Juridica------------------ 
 
 class VinculoViewSet(viewsets.ModelViewSet):
     queryset = Vinculo.objects.all()
