@@ -49,6 +49,7 @@ INSTALLED_APPS += [
     'cadastro',
     'statusPedido',
     'pedidos',
+    'logs',
 ]
 
 REST_FRAMEWORK = {

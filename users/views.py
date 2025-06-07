@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 from django.contrib.auth.password_validation import validate_password
+from logs.models import LogDeAcesso
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -55,12 +56,37 @@ class LoginView(APIView):
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
+            #log caso login der erro
+            LogDeAcesso.objects.create(
+                user=email,
+                acao='Tentativa de Login',
+                resultado='erro',
+                detalhes='Credenciais Inválidas'
+            )
             return Response({"error": "Email ou senha inválidos."}, status=status.HTTP_400_BAD_REQUEST)
+        
 
         user = authenticate(username=user.username, password=password)
 
         if user:
             token, created = Token.objects.get_or_create(user=user)
+
+            #log caso login for bem sucedido
+            LogDeAcesso.objects.create(
+                user=user.email,
+                acao='Tentativa de Login',
+                resultado='sucesso',
+                detalhes='Login bem-sucedido.'
+            )
+
             return Response({"token": token.key})
         else:
+
+            #log caso login der erro
+            LogDeAcesso.objects.create(
+                user=email,
+                acao='Tentativa de Login',
+                resultado='erro',
+                detalhes='Credenciais Inválidas'
+            )
             return Response({"error": "Email ou senha inválidos."}, status=status.HTTP_400_BAD_REQUEST)

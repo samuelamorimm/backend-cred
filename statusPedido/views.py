@@ -5,6 +5,7 @@ from rest_framework import status, viewsets, permissions
 
 from cadastro.models import PedidoCredencial, EvolucaoPedido
 from cadastro.serializers import PedidoCredencialSerializer, EvolucaoPedidoSerializer
+from logs.models import LogDeAcesso
 
 
 class AtualizarStatusPedidoView(APIView):
@@ -39,6 +40,14 @@ class AtualizarStatusPedidoView(APIView):
             pedido_credencial=pedido,
             status_evolucao=novo_status,
             user_id=user_id
+        )
+
+        #log para caso atualização do pedido der certo
+        LogDeAcesso.objects.create(
+            user=request.user,
+            acao='Alteração de status',
+            resultado='sucesso',
+            detalhes='...'
         )
 
         return Response({'message': f'Status atualizado para {novo_status} com sucesso.'}, status=status.HTTP_200_OK)
