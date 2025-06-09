@@ -53,16 +53,27 @@ class PedidoCredencialSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EvolucaoPedidoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = EvolucaoPedido
-        fields = '__all__'
-
-
 class ObservacaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Observacao
-        fields = '__all__'
+        fields = ['id', 'titulo', 'conteudo', 'user_id', 'pedido_credencial']
+        read_only_fields = ['id', 'user_id']
+
+    def create(self, validated_data):
+        # Adiciona o user_id do request ao criar
+        validated_data['user_id'] = self.context['request'].user.id
+        return super().create(validated_data)
+
+class EvolucaoPedidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EvolucaoPedido
+        fields = ['id', 'status_evolucao', 'pedido_credencial', 'user_id']
+        read_only_fields = ['id', 'user_id']
+
+    def create(self, validated_data):
+        # Adiciona o user_id do request ao criar
+        validated_data['user_id'] = self.context['request'].user.id
+        return super().create(validated_data) 
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
