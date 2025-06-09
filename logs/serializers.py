@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import Observacao, EvolucaoPedido, PedidoCredencial
+from cadastro.models import Observacao, EvolucaoPedido, PedidoCredencial
 from .models import LogDeAcesso
 
 class LogDeAcessoSerializer(serializers.ModelSerializer):

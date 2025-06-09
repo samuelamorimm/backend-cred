@@ -27,7 +27,7 @@ class LogDeAcessoViewSet(ModelViewSet):
 class ObservacaoViewSet(viewsets.ModelViewSet):
     queryset = Observacao.objects.all()
     serializer_class = ObservacaoSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def get_queryset(self):
         queryset = Observacao.objects.all()
@@ -39,7 +39,7 @@ class ObservacaoViewSet(viewsets.ModelViewSet):
 class EvolucaoPedidoViewSet(viewsets.ModelViewSet):
     queryset = EvolucaoPedido.objects.all()
     serializer_class = EvolucaoPedidoSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def get_queryset(self):
         queryset = EvolucaoPedido.objects.all()
