@@ -53,7 +53,7 @@ class PessoaJuridicaViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = PessoaJuridica.objects.all()
     serializer_class = PessoaJuridicaSerializer
-    http_method_names = ['post']
+    http_method_names = ['get', 'post']
 
     @swagger_auto_schema(auto_schema=None)
     def destroy(self, request, *args, **kwargs):
