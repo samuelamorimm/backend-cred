@@ -13,13 +13,13 @@ from logs.serializers import ObservacaoSerializer, EvolucaoPedidoSerializer
 # Create your views here.
 
 class LogDeAcessoViewSet(ModelViewSet):
-  permission_classes = [IsAdminUser]
-  queryset = LogDeAcesso.objects.all()
-  serializer_class = LogDeAcessoSerializer
+    permission_classes = [IsAdminUser]
+    queryset = LogDeAcesso.objects.all()
+    serializer_class = LogDeAcessoSerializer
 
-  @swagger_auto_schema(auto_schema=None)
-  def destroy(self, request, *args, **kwargs):
-    return super().destroy(request, *args, **kwargs)
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
 
 # Create your views here.

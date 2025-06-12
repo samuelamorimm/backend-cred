@@ -17,6 +17,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 class EstadoViewSet(viewsets.ModelViewSet):
+    permission_classes=[IsAdminUser]
     queryset = Estado.objects.all()
     serializer_class = EstadoSerializer
 
@@ -25,6 +26,7 @@ class EstadoViewSet(viewsets.ModelViewSet):
         return super().destroy(request, *args, **kwargs)
 
 class MunicipioViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAdminUser]
     queryset = Municipio.objects.all()
     serializer_class = MunicipioSerializer
 

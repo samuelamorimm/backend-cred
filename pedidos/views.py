@@ -12,6 +12,8 @@ from drf_yasg import openapi
 # Create your views here.
 
 class ConsultaPedido(APIView):
+  permission_classes = [IsAuthenticated]
+
   @swagger_auto_schema(
         operation_description="Consulta o pedido de credencial de uma pessoa usando CPF e data de nascimento.",
         manual_parameters=[
@@ -36,6 +38,8 @@ class ConsultaPedido(APIView):
             404: "Pessoa ou pedido não encontrado."
         }
     )
+  
+  
 
   def get(self, request):
     data_nascimento = request.query_params.get('data')
@@ -66,7 +70,9 @@ class ConsultaPedido(APIView):
 
     
 class UploadDocumento(APIView):
+  permission_classes = [IsAuthenticated]
   parser_classes = [MultiPartParser]
+
 
   @swagger_auto_schema(
         operation_description="Upload de documento para um pedido de credencial.",
