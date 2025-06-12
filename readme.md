@@ -176,9 +176,3 @@ MIT License
 
 - Consulte o Swagger para exemplos práticos de cada endpoint!
 - Use as issues do repositório para dúvidas ou sugestões!
-
----
-
-✨ Boas integrações! ✨
-
----
