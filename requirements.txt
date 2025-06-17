@@ -8,6 +8,7 @@ djangorestframework_simplejwt==5.5.0
 drf-yasg==1.21.10
 inflection==0.5.1
 packaging==25.0
+phonenumbers==9.0.7
 pillow==11.2.1
 PyJWT==2.9.0
 pytz==2025.2
