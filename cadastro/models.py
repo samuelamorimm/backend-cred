@@ -31,7 +31,7 @@ class PessoaFisica(models.Model):
     data_emissao = models.DateField(null=True, blank=True)
     nome_mae = models.CharField(max_length=255, null=True, blank=True)
     nome_pai = models.CharField(max_length=255, null=True, blank=True)
-    naturalidade = models.CharField(max_length=255)
+    naturalidade = models.CharField(max_length=255, null=True, blank=True)
     nacionalidade = models.CharField(max_length=255)
     logradouro = models.CharField(max_length=255)
     numero = models.CharField(max_length=10)
@@ -78,8 +78,8 @@ class Vinculo(models.Model):
     num_ctps = models.CharField(max_length=45)
     pis_pasep = models.CharField(max_length=45, null=True, blank=True)
     fone_comercial = models.CharField(max_length=45)
-    pessoajuridica = models.ForeignKey(PessoaJuridica, on_delete=models.DO_NOTHING, related_name='vinculos')
-    pessoafisica = models.ForeignKey(PessoaFisica, on_delete=models.DO_NOTHING, related_name='vinculos')
+    pessoajuridica = models.ForeignKey(PessoaJuridica, on_delete=models.CASCADE, related_name='vinculos')
+    pessoafisica = models.ForeignKey(PessoaFisica, on_delete=models.CASCADE, related_name='vinculos')
 
     def __str__(self):
         return f"{self.pessoafisica.nome} - {self.cargo}"
@@ -95,9 +95,9 @@ class PedidoCredencial(models.Model):
     ]
 
     id = models.BigAutoField(primary_key=True)
-    data_pedido = models.DateTimeField()
+    data_pedido = models.DateTimeField(auto_now_add=True)
     status_pedido = models.CharField(max_length=45, choices=STATUS_CHOICES, default='PENDENTE', null=True, blank=True)
-    vinculo = models.ForeignKey(Vinculo, on_delete=models.DO_NOTHING, related_name='pedidos_credencial')
+    vinculo = models.ForeignKey(Vinculo, on_delete=models.CASCADE, related_name='pedidos_credencial')
 
     def __str__(self):
         return f"Pedido #{self.id}"

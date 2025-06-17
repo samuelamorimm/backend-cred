@@ -44,57 +44,57 @@ class PessoaFisicaSerializer(serializers.ModelSerializer):
         model = PessoaFisica
         fields = '__all__'
 
-    def validate_fone_celular(self, value):
-        return validar_telefone(value)
+    # def validate_fone_celular(self, value):
+    #     return validar_telefone(value)
 
-    def validate_fone_residencial(self, value):
-        return validar_telefone(value)
+    # def validate_fone_residencial(self, value):
+    #     return validar_telefone(value)
 
-    def validate_fone(self, value):
-        return validar_telefone(value)
+    # def validate_fone(self, value):
+    #     return validar_telefone(value)
 
-    def validate_cpf(self, value):
-        cpf = CPF()
-        if not cpf.validate(value):
-            raise serializers.ValidationError("CPF inválido")
-        return cpf.mask(value)
+    # def validate_cpf(self, value):
+    #     cpf = CPF()
+    #     if not cpf.validate(value):
+    #         raise serializers.ValidationError("CPF inválido")
+    #     return cpf.mask(value)
 
-    def validate_data_nascimento(self, value):
-        if value > date.today():
-            raise serializers.ValidationError("A data de nascimento não pode ser no futuro.")
-        return value
+    # def validate_data_nascimento(self, value):
+    #     if value > date.today():
+    #         raise serializers.ValidationError("A data de nascimento não pode ser no futuro.")
+    #     return value
 
-    def validate_cep(self, value):
-        return validar_cep(value)
+    # def validate_cep(self, value):
+    #     return validar_cep(value)
 
-    def validate_numero(self, value):
-        return validar_numero(value)
+    # def validate_numero(self, value):
+    #     return validar_numero(value)
 
 class PessoaJuridicaSerializer(serializers.ModelSerializer):
     class Meta:
         model = PessoaJuridica
         fields = '__all__'
 
-    def validate_fone_celular(self, value):
-        return validar_telefone(value)
+    # def validate_fone_celular(self, value):
+    #     return validar_telefone(value)
 
-    def validate_fone_residencial(self, value):
-        return validar_telefone(value)
+    # def validate_fone_residencial(self, value):
+    #     return validar_telefone(value)
 
-    def validate_fone(self, value):
-        return validar_telefone(value)
+    # def validate_fone(self, value):
+    #     return validar_telefone(value)
 
-    def validate_cnpj(self, value):
-        cnpj = CNPJ()
-        if not cnpj.validate(value):
-            raise serializers.ValidationError("CNPJ inválido")
-        return cnpj.mask(value)
+    # def validate_cnpj(self, value):
+    #     cnpj = CNPJ()
+    #     if not cnpj.validate(value):
+    #         raise serializers.ValidationError("CNPJ inválido")
+    #     return cnpj.mask(value)
 
-    def validate_cep(self, value):
-        return validar_cep(value)
+    # def validate_cep(self, value):
+    #     return validar_cep(value)
 
-    def validate_numero(self, value):
-        return validar_numero(value)
+    # def validate_numero(self, value):
+    #     return validar_numero(value)
 
 class VinculoSerializer(serializers.ModelSerializer):
     class Meta:

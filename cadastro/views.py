@@ -38,7 +38,7 @@ class PessoaFisicaViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = PessoaFisica.objects.all()
     serializer_class = PessoaFisicaSerializer
-    http_method_names = ['post']
+    http_method_names = ['post', 'get']
 
     @swagger_auto_schema(auto_schema=None)
     def destroy(self, request, *args, **kwargs):
