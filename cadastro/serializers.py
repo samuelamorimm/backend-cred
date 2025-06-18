@@ -102,7 +102,12 @@ class VinculoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PedidoCredencialSerializer(serializers.ModelSerializer):
-    nome_pessoafisica = serializers.CharField(source='vinculo.pessoafisica.nome', read_only=True)
+    nome_pf = serializers.CharField(source='vinculo.pessoafisica.nome', read_only=True)
+    cpf_pf = serializers.CharField(source='vinculo.pessoafisica.cpf', read_only=True)
+    rg_pf = serializers.CharField(source='vinculo.pessoafisica.rg', read_only=True)
+    email_pf = serializers.CharField(source='vinculo.pessoafisica.email', read_only=True)
+    fone_pf = serializers.CharField(source='vinculo.pessoafisica.fone_celular', read_only=True)
+
 
     class Meta:
         model = PedidoCredencial

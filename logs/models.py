@@ -15,4 +15,4 @@ class LogDeAcesso(models.Model):
   data_hora = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return f'{self.user.email} -- {self.acao}'
+    return f'{self.user} -- {self.acao}'
